@@ -1,6 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
-csv_path= r'./numpy_image/image_b.csv'
+csv_path= r'C:\Users\danie\git\COMP248\lab2\Week2_Lab2_numpyImageManipulation\numpy_image/image_b.csv'
 
 def read_csv_image(csv_path):
     """
@@ -20,28 +20,28 @@ def read_csv_image(csv_path):
         # HINT: use the attribute that tells dimensions of the NumPy array
         # URL: https://numpy.org/doc/stable/reference/generated/numpy.ndarray.shape.html
         print(f"Successfully loaded CSV file: {csv_path}")
-        print(f"Data shape: {_____}")   
+        print(f"Data shape: {image_data.shape}")   
         
         
        
         # TODO: Print the data type of the image data
         # HINT: use the attribute that tells the type of elements inside array
         # URL: https://numpy.org/doc/stable/reference/generated/numpy.ndarray.dtype.html
-        print(f"Data type: {_____}")    
+        print(f"Data type: {image_data.dtype}")    
         
         
        
         # TODO: Print the minimum pixel value in the image data
         # HINT: use NumPy function to find the minimum
         # URL: https://numpy.org/doc/stable/reference/generated/numpy.ndarray.min.html
-        print(f"Min value: {_____(____)}")   
+        print(f"Min value: {image_data.min()}")   
 
 
        
         # TODO: Print the maximum pixel value in the image data
         # HINT: use NumPy function to find the maximum
         # URL: https://numpy.org/doc/stable/reference/generated/numpy.ndarray.max.html
-        print(f"Max value: {_____(____)}")   
+        print(f"Max value: {image_data.max()}")   
        
         
                 
@@ -49,7 +49,7 @@ def read_csv_image(csv_path):
         # HINT: Use slicing to select the first 5 rows and first 5 columns
         # URL: https://numpy.org/doc/stable/user/basics.indexing.html
         print(f"First 5x5 pixel values:")
-        print(image_data[_____, _____])   
+        print(image_data[0:5:1, 0:5:1])   
         
                        
         # Display the image
