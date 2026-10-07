@@ -1,12 +1,12 @@
 import pandas as pd
 import requests
+from config import URL
 
 class MeteoLoader:
     def __init__(self, weather_variable:list[str]):
         self.weather_variable = weather_variable
         
     def load_meteo_data(self):
-        url = "https://api.open-meteo.com/v1/forecast"
         params = {
             "latitude": 43.70,   # Toronto coordinates
             "longitude": -79.42,
@@ -16,15 +16,18 @@ class MeteoLoader:
         }
         
         try:
-            response = requests.get(url, params=params)
+            response = requests.get(URL, params=params)
             response.raise_for_status()  # Raises an error for bad status codes (4xx or 5xx)
             data = response.json()
             
             # Parse the JSON response into a DataFrame
-            forecast_df = pd.DataFrame({var : data['daily'][var] for var in self.weather_variable})
+            forecast_df = pd.DataFrame({
+                var : data['daily'][var] for var in self.weather_variable})
+            forecast_df['Date/Time'] = pd.to_datetime(data['daily']['time'])
+
             
             print("✓ Weather forecast data extracted from API.")
-            return meteo_df
+            return forecast_df
             
         except requests.exceptions.RequestException as e:
             print(f"Error fetching forecast data: {e}")

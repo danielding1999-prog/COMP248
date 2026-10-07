@@ -6,5 +6,6 @@ class CSVloader:
         
     def load_CSV(self):
         df = pd.read_csv(self.CSV_path)
+        df['Date/Time'] = pd.to_datetime(df['Date/Time'])
         return df
     
