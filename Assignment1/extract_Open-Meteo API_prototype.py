@@ -18,7 +18,7 @@ def extract_forecast_data():
         response = requests.get(url, params=params)
         response.raise_for_status()  # Raises an error for bad status codes (4xx or 5xx)
         data = response.json()
-        print(data)
+        # print(data)
         
         # Parse the JSON response into a DataFrame
         forecast_df = pd.DataFrame({
@@ -41,4 +41,4 @@ def extract_forecast_data():
         print(f"Error fetching forecast data: {e}")
         return pd.DataFrame()  # Return empty DataFrame on error
 forecast_df = extract_forecast_data()
-# print(forecast_df)
+print(forecast_df)

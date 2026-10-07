@@ -2,7 +2,7 @@ import pandas as pd
 import requests
 from config import URL
 
-class MeteoLoader:
+class Extractor:
     def __init__(self, weather_variable:list[str]):
         self.weather_variable = weather_variable
         
@@ -27,6 +27,7 @@ class MeteoLoader:
 
             
             print("✓ Weather forecast data extracted from API.")
+            
             return forecast_df
             
         except requests.exceptions.RequestException as e:
