@@ -27,7 +27,7 @@ print("Matrix:", matrix)
 tensor3d = tf.constant([[[1, 2], [3, 4]], [[5, 6], [7, 8]]])
 print("3D Tensor:", tensor3d)
 
-print("################################# End of Section 1 #################################")
+print(f"################################# End of Section 1 #################################\n")
 
 """Section #2. Tensor Properties
 Tensors have a few important attributes:
@@ -37,7 +37,7 @@ print("Shape:", matrix.shape)      # (2, 2)
 print("Rank (dimensions):", tf.rank(matrix))
 print("Data type:", matrix.dtype)
 
-print("################################# End of Section 2 #################################")
+print(f"################################# End of Section 2 #################################\n")
 
 
 
@@ -58,7 +58,7 @@ random_tensor = tf.random.uniform(shape=(3, 3), minval=0, maxval=10)
 print(random_tensor)
 
 
-print("################################# End of Section 3 #################################")
+print(f"################################# End of Section 3 #################################\n  ")
 
 ''' Section #4. Basic Tensor Operations
 
@@ -70,12 +70,13 @@ b = tf.constant([4, 5, 6])
 
 print("Addition:", a + b)
 print("Multiplication:", a * b)
+# matrix dot product
 print("Matrix multiplication:", tf.matmul([[1, 2]], [[3], [4]]))  # [[1*3 + 2*4]]
 
 
-print("################################# End of Section 4 #################################")
+print(f"################################# End of Section 4 #################################\n")
 
-"""Sextion #5. Tensors in TensorFlow Models
+"""Section #5. Tensors in TensorFlow Models
 When you build a neural network in TensorFlow, all the inputs, weights, and outputs are tensors.
 Example: Input → Layer → Output
 
@@ -100,7 +101,7 @@ output = layer(X)   # Input tensor flows into model
 print("Input tensor:\n", X)
 print("Output tensor:\n", output)
 
-print("################################# End of Section 5 #################################")
+print(f"################################# End of Section 5 #################################\n")
 
 
 
