@@ -1,28 +1,27 @@
 import pandas as pd
 import requests
-from config import URL
 
 class Extractor:
-    def __init__(self, weather_variable:list[str]):
-        self.weather_variable = weather_variable
+    def __init__(self, url):
+        self.url = url
         
-    def load_meteo_data(self):
+    def extract(self, weather_variable:list[str]):
         params = {
             "latitude": 43.70,   # Toronto coordinates
             "longitude": -79.42,
-            "daily": self.weather_variable,
+            "daily": weather_variable,
             "timezone": "America/Toronto",
             "forecast_days": 16  # Get the next 16 days
         }
         
         try:
-            response = requests.get(URL, params=params)
+            response = requests.get(self.url, params=params)
             response.raise_for_status()  # Raises an error for bad status codes (4xx or 5xx)
             data = response.json()
             
             # Parse the JSON response into a DataFrame
             forecast_df = pd.DataFrame({
-                var : data['daily'][var] for var in self.weather_variable})
+                var : data['daily'][var] for var in weather_variable})
             forecast_df['Date/Time'] = pd.to_datetime(data['daily']['time'])
 
             

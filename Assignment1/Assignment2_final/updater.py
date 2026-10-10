@@ -1,6 +1,6 @@
 from csvloader import CSVloader
 import pandas as pd
-from config import DATA_PATH
+from config import DATA_PATH, COLUMN_MAPPING
 
 class Updater:
     def __init__(self, new_forecast, csvloader):
@@ -9,11 +9,11 @@ class Updater:
 
     # read the original weather_data.csv file
     def read_csv(self):
-        return self.csvreader.load_CSV()
-    # extract the data that has the data_type forecast001214
-    def locate_records(self, dataset, column_name, data):
-        return dataset.loc[dataset[column_name] == data]
-    # compare with the new_forecast data
+        self.weather_data = self.csvreader.load_CSV()
+
+    def update(self):
+        forecast_renamed = self.forecast.rename(columns = COLUMN_MAPPING)
+        pd.concat([self.weather_data, forecast_renamed]).drop_duplicates(subset=["Date/Time"], keep='last').to_csv("./Weather_Data.csv", index = False)
 
     # find the new rows of forecast data
 
