@@ -1,6 +1,6 @@
 import pandas as pd
 
-class CSVloader:
+class Loader:
     def __init__ (self, CSV_path):
         self.CSV_path = CSV_path
         
